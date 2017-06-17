@@ -1,2 +1,7 @@
-<h1>Game#index</h1>
-<p>Find me in app/views/game/index.html.erb</p>
+<div class="game-container">
+  <h1>Choose Your Own Adventure</h1>
+  <p>Welcome to this adventure game! The primary purpose of this game is to demonstrate rails programming techniques, but it might end up being good. Who knows?</p>
+  <% unless Room.first.nil? %>
+  <%= link_to "Begin", game_path(Room.first) %>
+  <% end %>
+</div>

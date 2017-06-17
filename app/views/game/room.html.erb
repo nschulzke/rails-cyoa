@@ -1,11 +1,13 @@
-<h1><%= @room.title %></h1>
-<p><%= @room.body %></p>
-<% if @room.paths_out.size > 0 %>
-  <ul>
-      <% @room.paths_out.each do |path| %>
-        <li>
-          <%= link_to path.choice, game_path(path.to_room) %>
-        </li>
-      <% end %>
-  </ul>
-<% end %>
+<div class="game-container">
+  <h1><%= @room.title %></h1>
+  <p><%= @room.body %></p>
+  <% if @room.paths_out.size > 0 %>
+    <ul>
+        <% @room.paths_out.each do |path| %>
+          <li>
+            <%= link_to path.choice, game_path(path.to_room) %>
+          </li>
+        <% end %>
+    </ul>
+  <% end %>
+</div>
