@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :rooms
 
   root 'game#index'
-  get ':id', to: 'game#room'
+  get ':id', to: 'game#room', as: 'game'
 end

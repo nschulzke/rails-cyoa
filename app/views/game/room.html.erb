@@ -4,7 +4,7 @@
   <ul>
       <% @room.paths_out.each do |path| %>
         <li>
-          <%= link_to path.choice, path.to_room %>
+          <%= link_to path.choice, game_path(path.to_room) %>
         </li>
       <% end %>
   </ul>
