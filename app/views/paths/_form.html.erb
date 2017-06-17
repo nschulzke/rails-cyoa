@@ -18,12 +18,12 @@
 
   <div class="field">
     <%= form.label :from_room_id %>
-    <%= form.number_field :from_room_id, id: :path_from_room_id %>
+    <%= form.collection_select :from_room_id, Room.all, :id, :title %>
   </div>
 
   <div class="field">
     <%= form.label :to_room_id %>
-    <%= form.number_field :to_room_id, id: :path_to_room_id %>
+    <%= form.collection_select :to_room_id, Room.all, :id, :title %>
   </div>
 
   <div class="actions">

@@ -16,8 +16,8 @@
     <% @paths.each do |path| %>
       <tr>
         <td><%= path.choice %></td>
-        <td><%= path.from_room_id %></td>
-        <td><%= path.to_room_id %></td>
+        <td><%= path.from_room.title %></td>
+        <td><%= path.to_room.title %></td>
         <td><%= link_to 'Show', path %></td>
         <td><%= link_to 'Edit', edit_path_path(path) %></td>
         <td><%= link_to 'Destroy', path, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -7,12 +7,12 @@
 
 <p>
   <strong>From room:</strong>
-  <%= @path.from_room_id %>
+  <%= @path.from_room.title %>
 </p>
 
 <p>
   <strong>To room:</strong>
-  <%= @path.to_room_id %>
+  <%= @path.to_room.title %>
 </p>
 
 <%= link_to 'Edit', edit_path_path(@path) %> |
