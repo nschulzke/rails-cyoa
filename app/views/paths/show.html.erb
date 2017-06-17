@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Choice:</strong>
+  <%= @path.choice %>
+</p>
+
+<p>
+  <strong>From room:</strong>
+  <%= @path.from_room_id %>
+</p>
+
+<p>
+  <strong>To room:</strong>
+  <%= @path.to_room_id %>
+</p>
+
+<%= link_to 'Edit', edit_path_path(@path) %> |
+<%= link_to 'Back', paths_path %>
