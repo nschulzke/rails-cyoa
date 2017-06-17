@@ -34,7 +34,7 @@ class PathsController < ApplicationController
 
     respond_to do |format|
       if @path.save
-        format.html { redirect_to @path, notice: 'Path was successfully created.' }
+        format.html { redirect_to @path.from_room, notice: 'Path was successfully created.' }
         format.json { render :show, status: :created, location: @path }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class PathsController < ApplicationController
   def update
     respond_to do |format|
       if @path.update(path_params)
-        format.html { redirect_to @path, notice: 'Path was successfully updated.' }
+        format.html { redirect_to @path.from_room, notice: 'Path was successfully updated.' }
         format.json { render :show, status: :ok, location: @path }
       else
         format.html { render :edit }
@@ -60,9 +60,10 @@ class PathsController < ApplicationController
   # DELETE /paths/1
   # DELETE /paths/1.json
   def destroy
+    from_room = @path.from_room
     @path.destroy
     respond_to do |format|
-      format.html { redirect_to paths_url, notice: 'Path was successfully destroyed.' }
+      format.html { redirect_to from_room, notice: 'Path was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
