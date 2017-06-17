@@ -15,11 +15,6 @@ class PathsController < ApplicationController
   # GET /paths/new
   def new
     @path = Path.new
-  end
-
-  # GET /paths/new/1
-  def new_from
-    @path = Path.new
     @from_room = Room.find(params[:from_room_id])
   end
 

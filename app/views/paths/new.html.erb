@@ -1,5 +1,5 @@
 <h1>New Path</h1>
 
-<%= render 'form', path: @path %>
+<%= render 'form', path: @path, from_room: @from_room %>
 
-<%= link_to 'Back', paths_path %>
+<%= link_to 'Back', @from_room.nil? ? paths_path : @from_room %>

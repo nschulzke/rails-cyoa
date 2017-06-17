@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :from_room_id %>
-    <%= form.collection_select :from_room_id, Room.all, :id, :title %>
+    <%= form.collection_select :from_room_id, Room.all, :id, :title, selected: @from_room.nil? ? '' : @from_room.id %>
   </div>
 
   <div class="field">

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :paths
-  get 'paths/new/:from_room_id', to: 'paths#new_from', as: 'new_path_from'
+  get 'paths/new/:from_room_id', to: 'paths#new', as: 'new_path_from'
   
   resources :rooms
   

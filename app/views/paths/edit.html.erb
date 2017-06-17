@@ -3,4 +3,4 @@
 <%= render 'form', path: @path %>
 
 <%= link_to 'Show', @path %> |
-<%= link_to 'Back', paths_path %>
+<%= link_to 'Back', @from_room.nil? ? paths_path : @from_room %>
