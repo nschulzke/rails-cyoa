@@ -1,6 +1,6 @@
 <div class="game-container">
   <h1><%= @room.title %></h1>
-  <p><%= @room.body %></p>
+  <div><%= simple_format(@room.body) %></div>
   <% if @room.paths_out.size > 0 %>
     <ul>
         <% @room.paths_out.each do |path| %>
