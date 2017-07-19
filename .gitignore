@@ -12,13 +12,11 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
 /node_modules
 /yarn-error.log
 
 .byebug_history
 /.idea
 
-/CYOA_*
-
 /Gemfile.lock
+/db/schema.rb
