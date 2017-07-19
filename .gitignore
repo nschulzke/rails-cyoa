@@ -20,3 +20,5 @@
 /.idea
 
 /CYOA_*
+
+/Gemfile.lock
