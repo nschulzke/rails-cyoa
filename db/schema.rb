@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20170617220503) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "paths", force: :cascade do |t|
     t.string "choice"
     t.integer "from_room_id"
