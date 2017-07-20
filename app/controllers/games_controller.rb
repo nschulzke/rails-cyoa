@@ -14,6 +14,7 @@ class GamesController < ApplicationController
   # GET /games/new
   def new
     @game = Game.new
+    @game.build_first_room
   end
 
   # GET /games/1/edit
@@ -23,6 +24,7 @@ class GamesController < ApplicationController
   # POST /games
   def create
     @game = Game.new(game_params)
+    @game.user = current_user
 
     if @game.save
       redirect_to @game, notice: 'Game was successfully created.'
@@ -54,6 +56,6 @@ class GamesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def game_params
-      params.require(:game).permit(:title, :first_room_id, :user_id)
+      params.require(:game).permit(:title, :first_room_id, first_room_attributes: [:title, :body])
     end
 end

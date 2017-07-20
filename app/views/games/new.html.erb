@@ -1,5 +1,38 @@
 <h1>New Game</h1>
+<%= form_with(model: @game, local: true) do |form| %>
+  <% if @game.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
 
-<%= render 'form', game: @game %>
+      <ul>
+        <% @game.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :game_title %>
+  </div>
+
+  <h4>First Room</h4>
+  <%= form.fields_for :first_room do |first_room| %>
+    <div class="field">
+      <%= first_room.label :title %>
+      <%= first_room.text_field :title, id: :room_title %>
+    </div>
+
+    <div class="field">
+      <%= first_room.label :body %>
+      <%= first_room.text_area :body, id: :room_body %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Back', games_path %>
