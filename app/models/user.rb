@@ -9,4 +9,6 @@ class User < ApplicationRecord
                                  message: "must contain only letters and numbers" }
 
   has_many :games
+  has_many :rooms, through: :games
+  has_many :paths, through: :games
 end

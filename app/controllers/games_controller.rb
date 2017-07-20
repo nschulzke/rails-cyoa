@@ -2,9 +2,11 @@ class GamesController < ApplicationController
   access user: :all, admin: :all
   before_action :set_game, only: [:show, :edit, :update, :destroy]
 
+  include UserOwnershipConcern
+
   # GET /games
   def index
-    @games = Game.all
+    @games = current_user.games
   end
 
   # GET /games/1
@@ -13,7 +15,7 @@ class GamesController < ApplicationController
 
   # GET /games/new
   def new
-    @game = Game.new
+    @game = current_user.games.build
     @game.build_first_room
   end
 
@@ -23,9 +25,8 @@ class GamesController < ApplicationController
 
   # POST /games
   def create
-    @game = Game.new(game_params)
+    @game = current_user.games.create(game_params)
     @game.first_room.game = @game
-    @game.user = current_user
 
     if @game.save
       redirect_to @game, notice: 'Game was successfully created.'
@@ -53,6 +54,7 @@ class GamesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_game
       @game = Game.find(params[:id])
+      validate_ownership(@game)
     end
 
     # Only allow a trusted parameter "white list" through.
