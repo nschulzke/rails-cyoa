@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  access user: :all, admin: :all
   before_action :set_room, only: [:show, :edit, :update, :destroy]
 
   # GET /rooms

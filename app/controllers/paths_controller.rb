@@ -1,4 +1,5 @@
 class PathsController < ApplicationController
+  access user: :all, admin: :all
   before_action :set_path, only: [:show, :edit, :update, :destroy]
 
   # GET /paths

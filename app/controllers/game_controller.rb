@@ -1,4 +1,6 @@
 class GameController < ApplicationController
+  access all: [:room, :index], admin: :all
+
   def index
   end
 
