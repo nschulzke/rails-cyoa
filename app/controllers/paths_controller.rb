@@ -16,7 +16,7 @@ class PathsController < ApplicationController
   # GET /paths/new
   def new
     @path = Path.new
-    @from_room = Room.find(params[:from_room_id])
+    @from_room = Room.find(params[:from_room_id]) if params[:from_room_id]
   end
 
   # GET /paths/1/edit
