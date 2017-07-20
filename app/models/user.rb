@@ -7,4 +7,6 @@ class User < ApplicationRecord
 
   validates :username, format: { with:    /\A[a-z0-9A-Z]*\z/,
                                  message: "must contain only letters and numbers" }
+
+  has_many :games
 end
