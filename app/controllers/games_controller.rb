@@ -24,6 +24,7 @@ class GamesController < ApplicationController
   # POST /games
   def create
     @game = Game.new(game_params)
+    @game.first_room.game = @game
     @game.user = current_user
 
     if @game.save
