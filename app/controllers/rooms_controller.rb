@@ -5,12 +5,14 @@ class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.json
   def index
-    @rooms = Room.all
+    @game = Game.find(params[:game_id])
+    @rooms = @game.rooms
   end
 
   # GET /rooms/new
   def new
-    @room = Room.new
+    @game = Game.find(params[:game_id])
+    @room = @game.rooms.build
   end
 
   # GET /rooms/1/edit
@@ -20,7 +22,7 @@ class RoomsController < ApplicationController
   # POST /rooms
   # POST /rooms.json
   def create
-    @room = Room.new(room_params)
+    @room = Game.find(params[:game_id]).rooms.create(room_params)
 
     respond_to do |format|
       if @room.save

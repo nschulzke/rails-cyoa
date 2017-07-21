@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   resources :paths, only: [:update, :destroy]
 
   resources :games do
-    resources :rooms, except: [:update, :destroy, :show]
+    resources :rooms, except: [:update, :destroy, :edit, :show]
   end
 
   get '/rooms/:id', to: 'play#room', as: 'rooms_show'
 
-  resources :rooms, except: [:show]#, only: [:update, :destroy]
+  resources :rooms, only: [:update, :destroy, :edit]
 
   devise_for :users
 
