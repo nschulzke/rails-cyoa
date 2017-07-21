@@ -1,5 +1,40 @@
 <h1>New Path</h1>
 
-<%= render 'form', path: @path, from_room: @from_room %>
+<%= form_with(model: @path, local: true, url: new_path_from_path(@path.from_room)) do |form| %>
+  <% if @path.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@path.errors.count, "error") %> prohibited this @path from being saved:</h2>
 
-<%= link_to 'Back', @from_room.nil? ? paths_path : @from_room %>
+      <ul>
+      <% @path.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :choice %>
+    <%= form.text_field :choice, id: :path_choice %>
+  </div>
+
+  <h4>New Room</h4>
+  <%= form.fields_for :to_room do |to_room| %>
+    <div class="field">
+      <%= to_room.label :title %>
+      <%= to_room.text_field :title, id: :room_title %>
+    </div>
+
+    <div class="field">
+      <%= to_room.label :body %>
+      <%= to_room.text_area :body, id: :room_body %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Back', @path.from_room %>

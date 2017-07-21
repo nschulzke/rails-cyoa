@@ -1,22 +1,12 @@
 class PathsController < ApplicationController
   access user: :all, admin: :all
-  before_action :set_path, only: [:show, :edit, :update, :destroy]
-
-  # GET /paths
-  # GET /paths.json
-  def index
-    @paths = Path.all
-  end
-
-  # GET /paths/1
-  # GET /paths/1.json
-  def show
-  end
+  before_action :set_path, only: [:update, :destroy, :edit]
 
   # GET /paths/new
   def new
-    @path = Path.new
-    @from_room = Room.find(params[:from_room_id]) if params[:from_room_id]
+    @path = current_user.paths.build
+    @path.from_room = Room.find(params[:from_room_id])
+    @path.build_to_room
   end
 
   # GET /paths/1/edit
@@ -26,8 +16,10 @@ class PathsController < ApplicationController
   # POST /paths
   # POST /paths.json
   def create
-    @path = Path.new(path_params)
-
+    @path = current_user.paths.create(path_params)
+    @path.from_room = Room.find(params[:from_room_id])
+    @path.game = @path.from_room.game
+    @path.to_room.game = @path.game
     respond_to do |format|
       if @path.save
         format.html { redirect_to @path.from_room, notice: 'Path was successfully created.' }
@@ -72,6 +64,6 @@ class PathsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def path_params
-      params.require(:path).permit(:choice, :from_room_id, :to_room_id)
+      params.require(:path).permit(:choice, :from_room_id, :to_room_id, to_room_attributes: [:title, :body])
     end
 end

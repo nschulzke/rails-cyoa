@@ -2,6 +2,6 @@
   <h1>Choose Your Own Adventure</h1>
   <p>Welcome to this adventure game! The primary purpose of this game is to demonstrate rails programming techniques, but it might end up being good. Who knows?</p>
   <% unless Room.first.nil? %>
-  <%= link_to "Begin", game_path(Room.first) %>
+  <%= link_to "Begin", play_path(Room.first) %>
   <% end %>
 </div>

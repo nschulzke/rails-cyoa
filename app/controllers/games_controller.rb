@@ -2,8 +2,6 @@ class GamesController < ApplicationController
   access user: :all, admin: :all
   before_action :set_game, only: [:show, :edit, :update, :destroy]
 
-  include UserOwnershipConcern
-
   # GET /games
   def index
     @games = current_user.games
@@ -54,7 +52,7 @@ class GamesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_game
       @game = Game.find(params[:id])
-      validate_ownership(@game)
+      @game.validate_ownership current_user
     end
 
     # Only allow a trusted parameter "white list" through.

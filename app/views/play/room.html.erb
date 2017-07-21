@@ -5,9 +5,19 @@
     <ul>
         <% @room.paths_out.each do |path| %>
           <li>
-            <%= link_to path.choice, game_path(path.to_room) %>
+            <%= link_to path.choice, play_path(path.to_room) %>
+            <% if @room.is_owned_by current_user %>
+              (
+              <%= link_to 'Delete', path, method: :delete, data: { confirm: 'Are you sure?' } %> |
+                  <%= link_to 'Edit', edit_path_path(@room, path) %>
+              )
+            <% end %>
           </li>
         <% end %>
     </ul>
+  <% end %>
+  <% if @room.is_owned_by current_user %>
+    <%= link_to 'New Path', new_path_from_path(@room) %> |
+    <%= link_to 'Edit', edit_room_path(@room) %>
   <% end %>
 </div>
