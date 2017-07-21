@@ -1,17 +1,8 @@
 <h1>Editing Path</h1>
 
 <%= form_with(model: @path, local: true) do |form| %>
-  <% if @path.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@path.errors.count, "error") %> prohibited this @path from being saved:</h2>
 
-      <ul>
-      <% @path.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render form_errors @path %>
 
   <div class="field">
     <%= form.label :choice %>
