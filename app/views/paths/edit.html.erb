@@ -2,7 +2,7 @@
 
 <%= form_with(model: @path, local: true) do |form| %>
 
-  <%= render form_errors @path %>
+  <%= render 'form_errors', path: @path %>
 
   <div class="field">
     <%= form.label :choice %>

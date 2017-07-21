@@ -1,5 +1,22 @@
 <h1>New Room</h1>
 
-<%= render 'form', room: @room %>
+<%= form_with(model: @room, local: true, url: game_rooms_path(@room.game)) do |form| %>
 
-<%= link_to 'Back', rooms_path %>
+  <%= render 'form_errors', room: @room %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :room_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body, id: :room_body %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', game_rooms_path(@room.game) %>

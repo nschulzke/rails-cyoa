@@ -1,7 +1,24 @@
 <h1>Editing Room</h1>
 
-<%= render 'form', room: @room %>
+<%= form_with(model: @room, local: true) do |form| %>
+
+  <%= render 'form_errors', room: @room %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :room_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body, id: :room_body %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'New Path', new_path_from_path(@room) %> |
 <%= link_to 'Show', @room %> |
-<%= link_to 'Index', rooms_path %>
+<%= link_to 'Index', game_rooms_path(@room.game) %>
