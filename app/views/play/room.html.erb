@@ -18,6 +18,7 @@
   <% end %>
   <% if @room.is_owned_by current_user %>
     <%= link_to 'New Path', new_path_from_path(@room) %> |
-    <%= link_to 'Edit', edit_room_path(@room) %>
+    <%= link_to 'Edit', edit_room_path(@room) %> |
+    <%= link_to 'Index', rooms_path %>
   <% end %>
 </div>
