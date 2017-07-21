@@ -2,15 +2,6 @@ class GamesController < ApplicationController
   access user: :all, admin: :all
   before_action :set_game, only: [:show, :edit, :update, :destroy]
 
-  # GET /games
-  def index
-    @games = current_user.games
-  end
-
-  # GET /games/1
-  def show
-  end
-
   # GET /games/new
   def new
     @game = current_user.games.build

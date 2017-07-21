@@ -5,7 +5,7 @@
     <ul>
         <% @room.paths_out.each do |path| %>
           <li>
-            <%= link_to path.choice, play_path(path.to_room) %>
+            <%= link_to path.choice, user_room_path(path.user.username, path.to_room) %>
             <% if @room.is_owned_by current_user %>
               (
               <%= link_to 'Delete', path, method: :delete, data: { confirm: 'Are you sure?' } %> |
